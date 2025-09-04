@@ -79,7 +79,6 @@ class SessionManager:
   async def _text_to_speech_azure(self, text: str) -> bytes:
       """Convert text to speech using Azure Cognitive Services (fallback)"""
       try:
-          # This is a placeholder - you'd need to implement Azure Speech SDK
           print("Azure TTS not implemented yet, using console output")
           return None
       except Exception as e:
@@ -98,7 +97,7 @@ class SessionManager:
           url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream"
 
           headers = {
-              "Accept": "audio/wav",   # 👈 ask for WAV instead of MP3
+              "Accept": "audio/wav",   
               "Content-Type": "application/json",
               "xi-api-key": api_key
           }
@@ -181,7 +180,7 @@ class SessionManager:
           print("✅ Audio generated and will be played")
           await self._publish_audio_data(audio_data)
       else:
-          print("⚠️ No cloud TTS available - message stored for display in UI")
+          print(" No cloud TTS available")
 
 
   async def _send_greeting(self, child_name: str):
@@ -254,7 +253,7 @@ class SessionManager:
       try:
           print("Student started speaking - simulating speech recognition...")
 
-          # Simulate speech recognition with different responses
+          # Simulate speech recognition with different responses becoaus the quto problem
           simulated_responses = [
               "Hello",
               "A", 
@@ -264,10 +263,10 @@ class SessionManager:
               "I want to learn"
           ]
 
-          # Wait a bit to simulate processing
+          # need to be awaited 
           await asyncio.sleep(2)
 
-          # Pick a random response to simulate speech recognition
+          # Pick a random response to simulate speech recognition again that for testing purposes
           import random
           detected_text = random.choice(simulated_responses)
           print(f"Simulated detected speech: '{detected_text}'")
@@ -336,13 +335,9 @@ SAMPLE_CHILD_DATA = {
   'level': 'beginner'
 }
 
-# Add these imports at the top with other imports
-
-
 def run_async(coro):
   """Helper to run async functions in Flask"""
   try:
-      # Get or create the event loop for the session manager
       if hasattr(session_manager, 'event_loop') and session_manager.event_loop and not session_manager.event_loop.is_closed():
           loop = session_manager.event_loop
       else:
@@ -429,3 +424,4 @@ def get_messages():
 if __name__ == '__main__':
   print("Starting LiveKit Session Control Server...")
   app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+
