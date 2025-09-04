@@ -4,7 +4,7 @@ from livekit.plugins import openai
 from livekit.agents import AgentSession, Agent
 from flask import Flask, render_template, jsonify, request
 from pydub import AudioSegment
-from app import Assistant
+from agent import Assistant
 import numpy as np
 import httpx
 from livekit.api import AccessToken, VideoGrants
@@ -424,4 +424,5 @@ def get_messages():
 if __name__ == '__main__':
   print("Starting LiveKit Session Control Server...")
   app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+
 
