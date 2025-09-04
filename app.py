@@ -350,12 +350,13 @@ async def run_session(child):
     memory_status = assistant.get_memory_status()
     print(f"Session memory status: {json.dumps(memory_status, indent=2)}")
     await session.generate_reply()
+########## this part is for local testing and running agent in the terminal you can un coment it to test ###########
+# async def entrypoint(ctx: agents.JobContext):
+#     await ctx.connect()
+#     child = {'name': 'Student'}  # Default or get from context
+#     await run_session(child)
 
-async def entrypoint(ctx: agents.JobContext):
-    await ctx.connect()
-    child = {'name': 'Student'}  # Default or get from context
-    await run_session(child)
+# if __name__ == '__main__':
+#         agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
 
-if __name__ == '__main__':
-        agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
 
