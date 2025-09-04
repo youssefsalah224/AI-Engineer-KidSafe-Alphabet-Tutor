@@ -47,8 +47,6 @@ class MemoryManager:
         # Keep only the last N exchanges
         if len(self.exchanges) > self.max_exchanges:
             self.exchanges = self.exchanges[-self.max_exchanges:]
-        
-        # Update derived settings based on conversation
         self._update_derived_settings()
     
     def _update_derived_settings(self):
@@ -96,7 +94,7 @@ class MemoryManager:
                 context += f"You: {exchange['assistant']}\n"
             context += "\n"
         
-        # Add derived settings
+       
         settings = self.derived_settings
         context += "=== PERSONALIZATION SETTINGS ===\n"
         if settings['child_name']:
@@ -215,7 +213,7 @@ class Assistant(Agent):
         self.current_activity = None
         self.awaiting_pronunciation = False
         
-        # Enhanced phonics-focused prompt
+        # Enhanced prompt for spicific child
         intro = f"""
 You are Youssef, a friendly and encouraging phonics tutor for young children. 
 You're working with {self.child_name} today to help them learn letters, sounds, and words.
@@ -285,7 +283,6 @@ Remember: You have access to recent conversation memory to personalize your teac
             
             if phonics_feedback:
                 print(f"Providing phonics feedback: {phonics_feedback}")
-                # Add to memory and continue with normal flow
                 self.memory.add_exchange(message, phonics_feedback)
                 return phonics_feedback
             
@@ -348,14 +345,15 @@ async def run_session(child):
     memory_status = assistant.get_memory_status()
     print(f"Session memory status: {json.dumps(memory_status, indent=2)}")
     await session.generate_reply()
-########## this part is for local testing and running agent in the terminal you can un coment it to test ###########
-# async def entrypoint(ctx: agents.JobContext):
-#     await ctx.connect()
-#     child = {'name': 'Student'}  # Default or get from context
-#     await run_session(child)
+########## this part is for local testing and running agent in the terminal this is for testing  ###########
+async def entrypoint(ctx: agents.JobContext):
+    await ctx.connect()
+    child = {'name': 'Student'} # any student name 
+    await run_session(child)
 
-# if __name__ == '__main__':
-#         agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
+if __name__ == '__main__':
+        agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
+
 
 
 
