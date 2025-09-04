@@ -31,7 +31,7 @@ An innovative AI-powered speech-first learning agent designed to teach children 
 AI-Engineer-Assessment-KidSafe-Alphabet-Tutor/
 ├── agent.py                    # Standalone terminal agent for testing
 ├── server.py                   # Web application entry point
-├── backend/                    # FastAPI backend services
+├── backend/                    # FlaskAPI backend services
 ├── frontend/                   # React.js user interface
 ├── llm_agent/                  # Core tutor logic & phonics engine
 ├── requirements.txt            # Python dependencies
