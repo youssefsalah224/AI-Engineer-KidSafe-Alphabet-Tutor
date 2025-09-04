@@ -141,11 +141,11 @@ python agent.py console/
 some of agent feature will not be working in the server side as the transcription model ran out (qutao exceeded)
 ## 🛠️ Technical Stack
 
-- **Backend**: FastAPI, Python 3.8+
+- **Backend**: flask, Python 3.8+
 - **Frontend**: React.js, HTML5, CSS3
-- **AI/ML**: OpenAI GPT models, custom phonics engine
+- **AI/ML**: OpenAI GPT models, custom phonics engine using live kit
 - **Speech**: ElevenLabs TTS, LiveKit real-time audio
-- **Deployment**: Uvicorn ASGI server
+- **Deployment**: flask local server
 
 ## 📋 Assessment Context
 
@@ -166,7 +166,7 @@ This project was developed as part of an AI Engineer role assessment, demonstrat
 - Modular architecture supports easy extension and maintenance
 - Child safety measures are integrated throughout the application
 
-## 📞 Support
+##  Support
 
 For questions about this assessment project or technical implementation details, please contact:
 
