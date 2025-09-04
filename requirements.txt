@@ -1,0 +1,12 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+websockets==12.0
+openai==1.35.7
+livekit 
+livekit-plugins-openai
+dotenv
+livekit-plugins-turn-detector
+livekit-agent
+pydub
+httpx
+python-dotenv
