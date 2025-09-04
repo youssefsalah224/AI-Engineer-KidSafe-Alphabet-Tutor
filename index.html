@@ -146,6 +146,279 @@
             display: none;
             font-weight: 500;
         }
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .avatar-face {
+            font-size: 2em;
+        }
+
+        .avatar-status {
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .camera-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .camera-placeholder {
+            width: 200px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .camera-icon {
+            font-size: 2em;
+            opacity: 0.7;
+        }
+
+        .camera-toggle {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .lesson-content {
+            text-align: left;
+        }
+
+        .lesson-title {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .lesson-progress {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .lesson-objectives {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .objective {
+            padding: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .objective.completed {
+            color: #4CAF50;
+        }
+
+        .progress-strip {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .progress-strip::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .progress-item.completed .progress-dot {
+            background: #4CAF50;
+        }
+
+        .progress-item.active .progress-dot {
+            background: #2196F3;
+            animation: pulse 2s infinite;
+        }
+
+        .progress-label {
+            font-size: 0.8em;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        .memory-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .memory-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .memory-label {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .memory-value {
+            font-weight: 500;
+        }
+
+        .settings-section {
+            margin-top: 30px;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .settings-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .settings-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .settings-content {
+            padding: 20px 0;
+        }
+
+        .parental-gate {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 193, 7, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 193, 7, 0.5);
+        }
+
+        .gate-question {
+            font-size: 1.1em;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .gate-input {
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .gate-verify {
+            padding: 10px 20px;
+            background: #ff9800;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .settings-options {
+            padding: 20px 0;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setting-item select,
+        .setting-item input[type="range"] {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: white;
+        }
         
         .message.success {
             background: rgba(76, 175, 80, 0.2);
@@ -203,6 +476,25 @@
             <span class="status-indicator" id="statusIndicator"></span>
             <span id="statusText">Checking...</span>
         </div>
+        <div class="status-card">
+            <h3>🤖 Youssef AI Avatar</h3>
+            <div class="avatar-container">
+                <div class="avatar-circle">
+                    <div class="avatar-face">😊</div>
+                </div>
+                <div class="avatar-status">Ready to teach!</div>
+            </div>
+        </div>
+        <div class="status-card">
+            <h3>📹 Camera View</h3>
+            <div class="camera-container">
+                <div class="camera-placeholder">
+                    <div class="camera-icon">📷</div>
+                    <div class="camera-text">Camera Off</div>
+                </div>
+                <button class="camera-toggle">Turn On Camera</button>
+            </div>
+        </div>
         
         <div class="controls">
             <button class="start-btn" id="startBtn" onclick="startSession()">
@@ -211,6 +503,43 @@
             <button class="stop-btn" id="stopBtn" onclick="stopSession()">
                 ⏹️ Stop Session
             </button>
+        </div>
+        <div class="status-card">
+            <h3>📚 Current Lesson</h3>
+            <div class="lesson-content">
+                <div class="lesson-title">Letter Recognition: A-E</div>
+                <div class="lesson-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <span class="progress-text">3/5 letters completed</span>
+                </div>
+                <div class="lesson-objectives">
+                    <div class="objective completed">✓ Letter A</div>
+                    <div class="objective completed">✓ Letter B</div>
+                    <div class="objective completed">✓ Letter C</div>
+                    <div class="objective">○ Letter D</div>
+                    <div class="objective">○ Letter E</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-strip">
+            <div class="progress-item completed">
+                <div class="progress-dot">1</div>
+                <div class="progress-label">Warm-up</div>
+            </div>
+            <div class="progress-item completed">
+                <div class="progress-dot">2</div>
+                <div class="progress-label">Practice</div>
+            </div>
+            <div class="progress-item active">
+                <div class="progress-dot">3</div>
+                <div class="progress-label">Challenge</div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-dot">4</div>
+                <div class="progress-label">Review</div>
+            </div>
         </div>
         
         <div class="message" id="message"></div>
@@ -227,6 +556,63 @@
             <div class="info-item">
                 <div class="info-label">Tutor</div>
                 <div class="info-value">Youssef AI</div>
+            </div>
+        </div>
+        <div class="status-card">
+            <h3>🧠 Learning Memory</h3>
+            <div class="memory-content">
+                <div class="memory-item">
+                    <span class="memory-label">Struggles with:</span>
+                    <span class="memory-value">Letter B pronunciation</span>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-label">Excels at:</span>
+                    <span class="memory-value">Letter recognition</span>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-label">Last session:</span>
+                    <span class="memory-value">Completed Level 2</span>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-label">Mood:</span>
+                    <span class="memory-value">Enthusiastic 😄</span>
+                </div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-header" onclick="toggleSettings()">
+                <h3>⚙️ Settings</h3>
+                <span class="settings-arrow">▼</span>
+            </div>
+            <div class="settings-content" id="settingsContent" style="display: none;">
+                <div class="parental-gate">
+                    <p>🔒 Parental verification required</p>
+                    <div class="gate-question">What is 7 + 5?</div>
+                    <input type="number" class="gate-input" placeholder="Enter answer">
+                    <button class="gate-verify">Verify</button>
+                </div>
+                <div class="settings-options" id="settingsOptions" style="display: none;">
+                    <div class="setting-item">
+                        <label>Session Duration:</label>
+                        <select>
+                            <option>15 minutes</option>
+                            <option selected>30 minutes</option>
+                            <option>45 minutes</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Difficulty Level:</label>
+                        <select>
+                            <option>Beginner</option>
+                            <option selected>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Voice Volume:</label>
+                        <input type="range" min="0" max="100" value="75">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
