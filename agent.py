@@ -13,11 +13,9 @@ from flask import Flask, render_template, jsonify, request
 from flask_socketio import SocketIO, emit
 import asyncio
 import threading
-import json
-import os
 import logging
 from typing import Optional
-import livekit.agents as agents
+
 
 load_dotenv()
 plugin = EOUPlugin()
@@ -358,5 +356,6 @@ async def run_session(child):
 
 # if __name__ == '__main__':
 #         agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
+
 
 
