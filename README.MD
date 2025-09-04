@@ -11,7 +11,7 @@
 
 
 
-An innovative AI-powered speech-first learning agent designed to teach children the English alphabet through interactive voice conversations. Built as part of an AI Engineer assessment, this project demonstrates expertise in conversational AI, speech processing, and child-safe educational technology.
+An innovative AI-powered speech-first learning agent designed to teach children the English alphabet through interactive voice conversations. Built as part of an AI Engineer assessment, this project demonstrates expertise in conversational AI using livekit and the implementation of flask api server 
 
 ##  Key Features
 
