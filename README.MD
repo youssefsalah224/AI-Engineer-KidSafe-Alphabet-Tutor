@@ -9,13 +9,15 @@ An innovative AI-powered speech-first learning agent designed to teach children 
 
 ##  Key Features
 
- Speech-First Learning: Natural voice interactions for immersive alphabet learning
- Phonics Integration: Advanced phonetic support with multiple sound associations
- Kid-Safe Design: Child-friendly interface and content filtering
- Dual Mode Operation: Web application and terminal-based testing
- Fallback System: Intelligent response simulator for API quota management
- Real-Time Processing: LiveKit integration for seamless voice/video streaming
- Educational Focus: Structured learning progression through A-Z
+🌟 Key Features
+
+🎙️ Speech-First Learning: Natural voice interactions for immersive alphabet learning
+🔤 Phonics Integration: Advanced phonetic support with multiple sound associations
+👶 Kid-Safe Design: Child-friendly interface and content filtering
+🌐 Dual Mode Operation: Web application and terminal-based testing
+🔄 Fallback System: Intelligent response simulator for API quota management
+⚡ Real-Time Processing: LiveKit integration for seamless voice/video streaming
+🎯 Educational Focus: Structured learning progression through A-Z
 
 ##  Architecture
 
