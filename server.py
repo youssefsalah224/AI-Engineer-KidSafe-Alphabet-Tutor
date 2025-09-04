@@ -147,7 +147,6 @@ class SessionManager:
           )
 
           await self.audio_source.capture_frame(frame)
-          print(f"✅ Published {len(audio_array)} samples at 16kHz")
 
       except Exception as e:
           print(f"Error publishing audio data: {str(e)}")
@@ -177,7 +176,7 @@ class SessionManager:
           audio_data = await self._text_to_speech_azure(text)
 
       if audio_data:
-          print("✅ Audio generated and will be played")
+          print(" Audio generated and will be played")
           await self._publish_audio_data(audio_data)
       else:
           print(" No cloud TTS available")
@@ -424,5 +423,6 @@ def get_messages():
 if __name__ == '__main__':
   print("Starting LiveKit Session Control Server...")
   app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+
 
 
