@@ -7,17 +7,17 @@
 
 An innovative AI-powered speech-first learning agent designed to teach children the English alphabet through interactive voice conversations. Built as part of an AI Engineer assessment, this project demonstrates expertise in conversational AI, speech processing, and child-safe educational technology.
 
-## 🌟 Key Features
+##  Key Features
 
-- **🎙️ Speech-First Learning**: Natural voice interactions for immersive alphabet learning
-- **🔤 Phonics Integration**: Advanced phonetic support with multiple sound associations
-- **👶 Kid-Safe Design**: Child-friendly interface and content filtering
-- **🌐 Dual Mode Operation**: Web application and terminal-based testing
-- **🔄 Fallback System**: Intelligent response simulator for API quota management
-- **⚡ Real-Time Processing**: LiveKit integration for seamless voice/video streaming
-- **🎯 Educational Focus**: Structured learning progression through A-Z
+- ** Speech-First Learning**: Natural voice interactions for immersive alphabet learning
+- ** Phonics Integration**: Advanced phonetic support with multiple sound associations
+- ** Kid-Safe Design**: Child-friendly interface and content filtering
+- ** Dual Mode Operation**: Web application and terminal-based testing
+- ** Fallback System**: Intelligent response simulator for API quota management
+- ** Real-Time Processing**: LiveKit integration for seamless voice/video streaming
+- ** Educational Focus**: Structured learning progression through A-Z
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 AI-Engineer-Assessment-KidSafe-Alphabet-Tutor/
@@ -31,7 +31,7 @@ AI-Engineer-Assessment-KidSafe-Alphabet-Tutor/
 └── README.md                  # Project documentation
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -58,7 +58,7 @@ AI-Engineer-Assessment-KidSafe-Alphabet-Tutor/
    # Edit .env with your API keys (see API Requirements section)
    ```
 
-## 🔑 API Requirements
+##  API Requirements
 
 This project requires the following API services:
 
@@ -111,25 +111,25 @@ python agent.py
 ```
 
 **Features of Terminal Mode:**
-- ✅ Standalone operation without web interface
-- ✅ Simulated speech input for testing learning logic
-- ✅ Complete alphabet tutoring functionality
-- ✅ No external API dependency for basic testing
-- ✅ Ideal for development and assessment review
+-  Standalone operation without web interface
+-  Simulated speech input for testing learning logic
+-  Complete alphabet tutoring functionality
+-  No external API dependency for basic testing
+-  Ideal for development and assessment review
 
 This mode allows evaluators and developers to test the core educational logic even when API limits are reached.
 
-## 🧪 Testing
+##  Testing
 
 The project includes comprehensive testing capabilities:
 
-- **Unit Tests**: Core tutoring logic validation
+- **Unit Tests**: Core tutoring logic validation trought the terminal testing 
 - **Integration Tests**: API service connectivity
-- **Simulator Mode**: Fallback testing without external dependencies
+
 
 Run tests with:
 ```bash
-python -m pytest tests/
+python agent.py console/
 ```
 
 ## 🛠️ Technical Stack
@@ -164,9 +164,8 @@ This project was developed as part of an AI Engineer role assessment, demonstrat
 For questions about this assessment project or technical implementation details, please contact:
 
 **Youssef Salah**  
-AI Developer | Full-Stack Engineer  
-📧 [Contact Information]  
-🌍 Cairo, Egypt
+AI Developer | Software Engineer  
+
 
 ---
 
