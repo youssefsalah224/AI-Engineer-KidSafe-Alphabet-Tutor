@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveKit Voice Tutor Control Panel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            opacity: 0.8;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .status-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-active {
+            background: #4CAF50;
+        }
+        
+        .status-inactive {
+            background: #f44336;
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+        
+        .controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .start-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .stop-btn {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+        }
+        
+        .stop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(244, 67, 54, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .loading {
+            opacity: 0.7;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: #4CAF50;
+        }
+        
+        .message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            color: #f44336;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-label {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 20px; }
+            h1 { font-size: 2em; }
+            .controls { flex-direction: column; align-items: center; }
+            button { width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 Voice Tutor Control</h1>
+        <p class="subtitle">LiveKit Phonics Session Manager</p>
+        
+        <div class="status-card">
+            <h3>Session Status</h3>
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span id="statusText">Checking...</span>
+        </div>
+        
+        <div class="controls">
+            <button class="start-btn" id="startBtn" onclick="startSession()">
+                🚀 Start Session
+            </button>
+            <button class="stop-btn" id="stopBtn" onclick="stopSession()">
+                ⏹️ Stop Session
+            </button>
+        </div>
+        
+        <div class="message" id="message"></div>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Student</div>
+                <div class="info-value">{{ child_name }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Room</div>
+                <div class="info-value" id="roomName">phonics-room</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Tutor</div>
+                <div class="info-value">Youssef AI</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/livekit-client/dist/livekit-client.umd.js"></script>
+    <script>
+        let isLoading = false;
+        let room = null;
+        let audioTrack = null;
+        
+        function updateStatus(active) {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            
+            if (active) {
+                statusIndicator.className = 'status-indicator status-active';
+                statusText.textContent = 'Session Active';
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            } else {
+                statusIndicator.className = 'status-indicator status-inactive';
+                statusText.textContent = 'Session Inactive';
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        }
+        
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            message.style.display = 'block';
+            
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        }
+        
+        function setLoading(button, loading) {
+            if (loading) {
+                button.classList.add('loading');
+                button.disabled = true;
+            } else {
+                button.classList.remove('loading');
+            }
+            isLoading = loading;
+        }
+
+        async function connectToRoom() {
+            try {
+                // Request microphone permission explicitly
+                await navigator.mediaDevices.getUserMedia({ audio: true });
+                showMessage('Microphone access granted', 'success');
+                
+                // Get token from backend
+                const tokenResponse = await fetch('/get_token', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const tokenData = await tokenResponse.json();
+                
+                if (tokenData.status === 'error') {
+                    throw new Error(tokenData.message);
+                }
+                
+                // Connect to LiveKit room
+                room = new LiveKitClient.Room();
+                
+                await room.connect(tokenData.ws_url, tokenData.token);
+                
+                // Enable microphone
+                audioTrack = await LiveKitClient.createLocalAudioTrack({
+                    echoCancellation: true,
+                    noiseSuppression: true
+                });
+                
+                await room.localParticipant.publishTrack(audioTrack);
+                
+                showMessage('Connected to voice session! You can now talk to Youssef.', 'success');
+                
+            } catch (error) {
+                if (error.name === 'NotAllowedError') {
+                    showMessage('Microphone permission denied. Please allow microphone access and try again.', 'error');
+                } else {
+                    showMessage('Failed to connect to voice: ' + error.message, 'error');
+                }
+            }
+        }
+
+        async function disconnectFromRoom() {
+            try {
+                if (audioTrack) {
+                    audioTrack.stop();
+                    audioTrack = null;
+                }
+                if (room) {
+                    await room.disconnect();
+                    room = null;
+                }
+            } catch (error) {
+                console.error('Error disconnecting from room:', error);
+            }
+        }
+        
+        async function startSession() {
+            if (isLoading) return;
+            
+            const startBtn = document.getElementById('startBtn');
+            setLoading(startBtn, true);
+            
+            try {
+                const response = await fetch('/start_session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    updateStatus(true);
+                    showMessage(data.message, 'success');
+                    
+                    // Wait a moment for the backend session to be ready
+                    setTimeout(async () => {
+                        await connectToRoom();
+                    }, 2000);
+                    
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Failed to start session: ' + error.message, 'error');
+            } finally {
+                setLoading(startBtn, false);
+                checkStatus();
+            }
+        }
+        
+        async function stopSession() {
+            if (isLoading) return;
+            
+            const stopBtn = document.getElementById('stopBtn');
+            setLoading(stopBtn, true);
+            
+            try {
+                // Disconnect from room first
+                await disconnectFromRoom();
+                
+                const response = await fetch('/stop_session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    updateStatus(false);
+                    showMessage(data.message, 'success');
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Failed to stop session: ' + error.message, 'error');
+            } finally {
+                setLoading(stopBtn, false);
+                checkStatus();
+            }
+        }
+        
+        async function checkStatus() {
+            try {
+                const response = await fetch('/status');
+                const data = await response.json();
+                updateStatus(data.active);
+                
+                if (data.room_name) {
+                    document.getElementById('roomName').textContent = data.room_name;
+                }
+            } catch (error) {
+                console.error('Failed to check status:', error);
+            }
+        }
+        
+        // Check status on page load
+        checkStatus();
+        
+        // Auto-refresh status every 5 seconds
+        setInterval(checkStatus, 5000);
+    </script>
+</body>
+</html>
