@@ -101,7 +101,7 @@ LIVEKIT_API_SECRET=your_livekit_api_secret
 2. **ElevenLabs API**: Sign up at [ElevenLabs](https://elevenlabs.io/) and obtain your API key
 3. **LiveKit**: Create an account at [LiveKit Cloud](https://livekit.io/) for real-time communication services
 
-## 🎮 Usage
+##  Usage
 
 ### Web Application Mode
 
@@ -138,7 +138,7 @@ Run tests with:
 ```bash
 python agent.py console/
 ```
-some of agent feature will not be working in the server side as the transcription model ran out (qutao exceeded)
+some of agent feature will not be working in the server side as the transcription model ran out (qutao exceeded) so some parts will need far more testing 
 ## 🛠️ Technical Stack
 
 - **Backend**: flask, Python 3.8+
@@ -147,7 +147,7 @@ some of agent feature will not be working in the server side as the transcriptio
 - **Speech**: ElevenLabs TTS, LiveKit real-time audio
 - **Deployment**: flask local server
 
-## 📋 Assessment Context
+##   Context
 
 This project was developed as part of an AI Engineer role assessment, demonstrating:
 
