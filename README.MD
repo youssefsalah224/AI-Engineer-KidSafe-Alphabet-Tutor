@@ -82,6 +82,9 @@ Create a `.env` file in the project root with the following variables:
 ```env
 # OpenAI Configuration
 OPENAI_API_KEY=your_openai_api_key_here
+AZURE_DEPLOYMENT="",
+AZURE_OPENAI_ENDPOINT="",
+AZURE_OPENAI_API_KEY="",
 
 # ElevenLabs Configuration  
 ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
@@ -131,15 +134,11 @@ This mode allows evaluators and developers to test the core educational logic ev
 
 The project includes comprehensive testing capabilities:
 
-- **Unit Tests**: Core tutoring logic validation trought the terminal testing 
-- **Integration Tests**: API service connectivity
-
-
 Run tests with:
 ```bash
 python agent.py console/
 ```
-
+some of agent feature will not be working in the server side as the transcription model ran out (qutao exceeded)
 ## 🛠️ Technical Stack
 
 - **Backend**: FastAPI, Python 3.8+
