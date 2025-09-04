@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 
 An innovative AI-powered speech-first learning agent designed to teach children the English alphabet through interactive voice conversations. Built as part of an AI Engineer assessment, this project demonstrates expertise in conversational AI, speech processing, and child-safe educational technology.
 
