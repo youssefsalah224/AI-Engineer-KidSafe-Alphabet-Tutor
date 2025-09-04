@@ -1,8 +1,14 @@
 # 🎓 KidSafe Alphabet Tutor
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
+[![LiveKit](https://img.shields.io/badge/LiveKit-00D2FF?style=for-the-badge&logo=livekit&logoColor=white)](https://livekit.io/)
+[![ElevenLabs](https://img.shields.io/badge/ElevenLabs-FF6B35?style=for-the-badge&logoColor=white)](https://elevenlabs.io/)
+
 
 
 An innovative AI-powered speech-first learning agent designed to teach children the English alphabet through interactive voice conversations. Built as part of an AI Engineer assessment, this project demonstrates expertise in conversational AI, speech processing, and child-safe educational technology.
