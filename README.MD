@@ -11,12 +11,12 @@ This project is designed as part of an AI Engineer assessment, focusing on speec
 -Response simulator: When transcription API quota is exceeded, a fallback simulator ensures the tutor still responds for testing.
 -Integration-ready: Uses LiveKit (real-time voice & video), OpenAI, and ElevenLabs for speech & interaction.
 
--- Project Structure
+🗂️ Project Structure
 AI-Engineer-Assessment-KidSafe-Alphabet-Tutor/
-│── routes.py      # Entry point for terminal testing (with simulator mode)
-│── backend/           # flask backend
-│── index.html/        # Simple React UI
-│── agent.py/          # Tutor logic & phonics rules
+│── server.py              # Entry point for terminal testing (with simulator mode)
+│── backend/            # FastAPI backend
+│── frontend/           # Simple React UI
+│── llm_agent/          # Tutor logic & phonics rules
 │── requirements.txt    # Python dependencies
 │── README.md           # Documentation (this file)
 
